@@ -20,6 +20,21 @@ module TotalVoice
       ')
       @client = Client.new(host: "#{@host}",
                            request_headers: @request_headers)
+
+      @audio = nil
+      @chamada = nil
+      @perfil = nil
+      @conta = nil
+      @composto = nil
+      @conferencia = nil
+      @sms = nil
+      @tts = nil
+      @central = nil
+      @did = nil
+    end
+
+    def audio
+        @audio ||= Audio.new self
     end
   end
 end
