@@ -1,25 +1,24 @@
-require 'ruby_http_client'
+require 'httparty'
+require_relative 'api/audio'
 
 module TotalVoice
   # Inicializa o HTTP client
   class API
-    attr_accessor :client
-    attr_reader :host
+    include HTTParty
+    ENDPOINT = 'https://api2.totalvoice.com.br'
     # * *Args*    :
     #   - +Access-Token+ -> Access-Token TotalVoice
     #   - +host+ -> Base URL para API
     #
     def initialize(access_token, host: nil)
       @access_token     = access_token
-      @host             = host ? host : 'https://api2.totalvoice.com.br'
-      @request_headers  = JSON.parse('
-        {
-          "Access-Token": "' + @access_token + '",
-          "Accept": "application/json"
+      @host             = host ? host : ENDPOINT
+      @options = {
+        headers: {
+          "Access-Token" => @access_token,
+          "Accept" => "application/json"
         }
-      ')
-      @client = Client.new(host: "#{@host}",
-                           request_headers: @request_headers)
+      }
 
       @audio = nil
       @chamada = nil
@@ -35,6 +34,25 @@ module TotalVoice
 
     def audio
         @audio ||= Audio.new self
+    end
+
+    def get(path)
+      response = self.class.get(@host + path, @options);
+      if response.success?
+        response  
+      else  
+        raise response.response  
+      end
+    end
+
+    def post(path, data)
+      @options.merge(data)
+      response = self.class.post(@host + path, @options);
+      if response.success?
+        response  
+      else  
+        raise response.response  
+      end
     end
   end
 end
