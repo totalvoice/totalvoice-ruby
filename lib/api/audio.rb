@@ -1,21 +1,24 @@
-require 'ruby_http_client'
-
 module TotalVoice
   # Inicializa o HTTP client
-  class Audio < Api
+  class Audio
     attr_reader :client
-    # * *Args*    :
-    #   - +Access-Token+ -> Access-Token TotalVoice
-    #   - +host+ -> Base URL para API
-    #
+    ROTA_AUDIO = "/audio"
 
     def initialize(client)
-      super
+      @client = client
     end
 
-    def enviar(numero_destino, url_audio, resposta_usuario: false, bina: nil, gravar_audio: false)
-      
-      @client.request()
+    def enviar(numero_destino, url_audio, resposta_usuario: false, bina: nil, gravar_audio: false)  
+      data = {
+        body: {
+          numero_destino: numero_destino, # your columns/data
+          url_audio: url_audio,
+          resposta_usuario: resposta_usuario,
+          bina: bina,
+          gravar_audio: gravar_audio
+        }
+      }  
+      @client.post(ROTA_AUDIO, data)
     end
   end
 end
