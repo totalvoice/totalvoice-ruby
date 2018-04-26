@@ -20,5 +20,9 @@ module TotalVoice
       }  
       @client.post(ROTA_AUDIO, data)
     end
+
+    def buscar(id)
+      @client.get(ROTA_AUDIO + "/" + id)
+    end
   end
 end

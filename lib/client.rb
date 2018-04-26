@@ -10,7 +10,7 @@ module TotalVoice
     #   - +Access-Token+ -> Access-Token TotalVoice
     #   - +host+ -> Base URL para API
     #
-    def initialize(access_token, host: nil)
+    def initialize(access_token, host = nil)
       @access_token     = access_token
       @host             = host ? host : ENDPOINT
       @options = {
@@ -37,22 +37,12 @@ module TotalVoice
     end
 
     def get(path)
-      response = self.class.get(@host + path, @options);
-      if response.success?
-        response  
-      else  
-        raise response.response  
-      end
+      self.class.get(@host + path, @options);
     end
 
     def post(path, data)
       @options.merge(data)
-      response = self.class.post(@host + path, @options);
-      if response.success?
-        response  
-      else  
-        raise response.response  
-      end
+      self.class.post(@host + path, @options);
     end
   end
 end
