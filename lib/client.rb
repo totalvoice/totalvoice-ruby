@@ -41,7 +41,7 @@ module TotalVoice
     end
 
     def post(path, data)
-      @options.merge(data)
+      @options.merge!(data)
       self.class.post(@host + path, @options);
     end
   end
