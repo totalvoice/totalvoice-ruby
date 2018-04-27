@@ -36,7 +36,7 @@ module TotalVoice
         @audio ||= Audio.new self
     end
 
-    def get(path)
+    def get(path, query = nil)
       self.class.get(@host + path, @options);
     end
 

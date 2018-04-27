@@ -22,7 +22,7 @@ module TotalVoice
     end
 
     def buscar(id)
-      @client.get(ROTA_AUDIO + "/" + id)
+      @client.get(ROTA_AUDIO + "/" + id.to_s)
     end
   end
 end
