@@ -1,3 +1,5 @@
+require_relative '../route'
+
 module TotalVoice
   # Inicializa o HTTP client
   class Audio
@@ -28,7 +30,7 @@ module TotalVoice
           gravar_audio: gravar_audio
         }
       }
-      @client.post(ROTA_AUDIO, data)
+      @client.post(Route.new([ROTA_AUDIO]), data)
     end
 
     ##
@@ -38,7 +40,7 @@ module TotalVoice
     # @return [json]
     #
     def buscar(id)
-      @client.get(ROTA_AUDIO + "/" + id.to_s)
+      @client.get(Route.new([ROTA_AUDIO, id.to_s]))
     end
   end
 end

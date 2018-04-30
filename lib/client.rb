@@ -36,13 +36,17 @@ module TotalVoice
         @audio ||= Audio.new self
     end
 
-    def get(path, query = nil)
-      self.class.get(@host + path, @options);
+    def get(route, query = nil)
+      self.class.get(@host + route.build(), @options);
     end
 
-    def post(path, data)
+    def post(route, data)
       @options.merge!(data)
-      self.class.post(@host + path, @options);
+      self.class.post(@host + route.build(), @options);
+    end
+
+    private def buildRequest(route, method, params = [], data = [])
+
     end
   end
 end
