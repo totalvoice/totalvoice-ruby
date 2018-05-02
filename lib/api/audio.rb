@@ -52,8 +52,10 @@ module TotalVoice
     # @return [json]
     #
     def relatorio(data_inicio, data_fim)
-      query = Query.new({ 'data_inicio': data_inicio, 'data_fim': data_fim })
-      @client.get(Route.new([ROTA_AUDIO, 'relatorio']), query)
+      @client.get(
+        Route.new([ROTA_AUDIO, 'relatorio']),
+        Query.new({ 'data_inicio': data_inicio, 'data_fim': data_fim })
+      )
     end
   end
 end
