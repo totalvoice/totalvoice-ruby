@@ -1,4 +1,5 @@
 require 'httparty'
+require_relative 'query'
 require_relative 'api/audio'
 
 module TotalVoice
@@ -37,7 +38,13 @@ module TotalVoice
     end
 
     def get(route, query = nil)
-      self.class.get(@host + route.build(), @options);
+
+      url = @host + route.build()
+      if(query.instance_of?(Query))
+        url = url + query.to_query()
+      end
+
+      self.class.get(url, @options);
     end
 
     def post(route, data)

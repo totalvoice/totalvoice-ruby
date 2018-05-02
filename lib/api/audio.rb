@@ -1,4 +1,5 @@
 require_relative '../route'
+require_relative '../query'
 
 module TotalVoice
   # Inicializa o HTTP client
@@ -41,6 +42,18 @@ module TotalVoice
     #
     def buscar(id)
       @client.get(Route.new([ROTA_AUDIO, id.to_s]))
+    end
+
+    ##
+    # Busca as informações do audio
+    #
+    # @param [String] data_inicio
+    # @param [String] data_fim
+    # @return [json]
+    #
+    def relatorio(data_inicio, data_fim)
+      query = Query.new({ 'data_inicio': data_inicio, 'data_fim': data_fim })
+      @client.get(Route.new([ROTA_AUDIO, 'relatorio']), query)
     end
   end
 end
