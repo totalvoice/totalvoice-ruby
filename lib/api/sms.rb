@@ -3,49 +3,49 @@ require_relative '../query'
 
 module TotalVoice
   # Inicializa o HTTP client
-  class Audio
+  class Sms
     attr_reader :client
-    ROTA_AUDIO = "/audio"
+    ROTA_SMS = "/sms"
 
     def initialize(client)
       @client = client
     end
 
     ##
-    # Envia um Audio para numero de destino
+    # Enviar SMS
     #
     # @param [String] numero_destino
-    # @param [String] url_audio
+    # @param [String] mensagem
     # @param [Boolean] resposta_usuario
-    # @param [String] bina
-    # @param [Boolean] gravar_audio
+    # @param [Boolean] multi_sms
+    # @param [DateTime|String] data_criacao
     # @return [json]
     #
-    def enviar(numero_destino, url_audio, resposta_usuario = false, bina = nil, gravar_audio = false)
+    def enviar(numero_destino, mensagem, resposta_usuario = false, multi_sms = false, data_criacao = nil)
       data = {
         body: {
           numero_destino: numero_destino,
-          url_audio: url_audio,
+          mensagem: mensagem,
           resposta_usuario: resposta_usuario,
-          bina: bina,
-          gravar_audio: gravar_audio
+          multi_sms: multi_sms,
+          data_criacao: data_criacao != nil ? Time.parse(data_criacao.to_s).utc : nil
         }
       }
-      @client.post(Route.new([ROTA_AUDIO]), data)
+      @client.post(Route.new([ROTA_SMS]), data)
     end
 
     ##
-    # Busca as informações do audio
+    # Busca as informações do registro de SMS
     #
     # @param [Integer] id
     # @return [json]
     #
     def buscar(id)
-      @client.get(Route.new([ROTA_AUDIO, id.to_s]))
+      @client.get(Route.new([ROTA_SMS, id.to_s]))
     end
 
     ##
-    # Gera relatório de Audio
+    # Gera relatório de SMS
     #
     # @param [DateTime|String] data_inicio
     # @param [DateTime|String] data_fim
@@ -53,8 +53,8 @@ module TotalVoice
     #
     def relatorio(data_inicio, data_fim)
       @client.get(
-        Route.new([ROTA_AUDIO, 'relatorio']),
-        Query.new({ 'data_inicio': data_inicio, 'data_fim': data_fim })
+        Route.new([ROTA_SMS, 'relatorio']),
+        Query.new({ 'data_inicio': Time.parse(data_inicio.to_s).utc, 'data_fim': Time.parse(data_fim.to_s).utc })
       )
     end
   end
