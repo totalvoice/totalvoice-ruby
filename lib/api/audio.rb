@@ -1,3 +1,5 @@
+require 'date'
+
 require_relative '../route'
 require_relative '../query'
 
@@ -52,9 +54,10 @@ module TotalVoice
     # @return [json]
     #
     def relatorio(data_inicio, data_fim)
+
       @client.get(
         Route.new([ROTA_AUDIO, 'relatorio']),
-        Query.new({ 'data_inicio': data_inicio, 'data_fim': data_fim })
+        Query.new({ 'data_inicio': Time.parse(data_inicio.to_s).utc, 'data_fim': Time.parse(data_fim.to_s).utc })
       )
     end
   end
