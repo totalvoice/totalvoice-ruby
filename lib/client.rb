@@ -37,6 +37,10 @@ module TotalVoice
         @audio ||= Audio.new self
     end
 
+    def sms
+        @sms ||= Sms.new self
+    end
+
     def get(route, query = nil)
 
       url = @host + route.build()
