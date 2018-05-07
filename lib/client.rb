@@ -3,6 +3,7 @@ require_relative 'query'
 require_relative 'api/audio'
 require_relative 'api/sms'
 require_relative 'api/tts'
+require_relative 'api/chamada'
 
 module TotalVoice
   # Inicializa o HTTP client
@@ -47,6 +48,10 @@ module TotalVoice
         @tts ||= Tts.new self
     end
 
+    def chamada
+        @chamada ||= Chamada.new self
+    end
+
     def get(route, query = nil)
 
       url = @host + route.build()
@@ -62,8 +67,13 @@ module TotalVoice
       self.class.post(@host + route.build(), @options);
     end
 
-    private def buildRequest(route, method, params = [], data = [])
+    def put(route, data)
+      @options.merge!(data)
+      self.class.put(@host + route.build(), @options);
+    end
 
+    def delete(route)
+      self.class.delete(@host + route.build(), @options);
     end
   end
 end
