@@ -1,6 +1,8 @@
 require 'httparty'
 require_relative 'query'
 require_relative 'api/audio'
+require_relative 'api/sms'
+require_relative 'api/tts'
 
 module TotalVoice
   # Inicializa o HTTP client
@@ -39,6 +41,10 @@ module TotalVoice
 
     def sms
         @sms ||= Sms.new self
+    end
+
+    def tts
+        @tts ||= Tts.new self
     end
 
     def get(route, query = nil)
