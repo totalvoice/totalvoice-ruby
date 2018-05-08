@@ -19,7 +19,7 @@ module TotalVoice
     # @param [Hash] opcoes
     # @return [json]
     #
-    def ligar(numero_destino, mensagem, opcoes = {})
+    def ligar(numero_origem, numero_destino, opcoes = {})
 
       body = {
         numero_origem: numero_origem,
