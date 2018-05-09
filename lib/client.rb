@@ -4,6 +4,7 @@ require_relative 'api/audio'
 require_relative 'api/sms'
 require_relative 'api/tts'
 require_relative 'api/chamada'
+require_relative 'api/perfil'
 
 module TotalVoice
   # Inicializa o HTTP client
@@ -50,6 +51,10 @@ module TotalVoice
 
     def chamada
         @chamada ||= Chamada.new self
+    end
+
+    def perfil
+        @perfil ||= Perfil.new self
     end
 
     def get(route, query = nil)
