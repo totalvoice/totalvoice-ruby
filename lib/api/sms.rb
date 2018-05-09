@@ -23,13 +23,11 @@ module TotalVoice
     #
     def enviar(numero_destino, mensagem, resposta_usuario = false, multi_sms = false, data_criacao = nil)
       data = {
-        body: {
-          numero_destino: numero_destino,
-          mensagem: mensagem,
-          resposta_usuario: resposta_usuario,
-          multi_sms: multi_sms,
-          data_criacao: data_criacao != nil ? Time.parse(data_criacao.to_s).utc : nil
-        }
+        numero_destino: numero_destino,
+        mensagem: mensagem,
+        resposta_usuario: resposta_usuario,
+        multi_sms: multi_sms,
+        data_criacao: data_criacao != nil ? Time.parse(data_criacao.to_s).utc : nil
       }
       @client.post(Route.new([ROTA_SMS]), data)
     end

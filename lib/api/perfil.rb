@@ -31,13 +31,10 @@ module TotalVoice
 
     ##
     # Atualiza os dados da minha conta
-    # @param [Hash] params
+    # @param [Hash] data
     # @return [json]
     #
-    def atualizar(params)
-      data = {
-        body: params
-      }
+    def atualizar(data)
       @client.put(Route.new([ROTA_PERFIL]), data)
     end
 
@@ -91,9 +88,7 @@ module TotalVoice
     #
     def salva_webhook(nome, url)
       data = {
-        body: {
-          url: url
-        }
+        url: url
       }
       @client.put(Route.new([ROTA_WEBHOOK, nome]), data)
     end

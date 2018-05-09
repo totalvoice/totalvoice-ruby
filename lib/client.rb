@@ -67,12 +67,18 @@ module TotalVoice
       self.class.get(url, @options);
     end
 
-    def post(route, data)
+    def post(route, params)
+      data = {
+        body: params
+      }
       @options.merge!(data)
       self.class.post(@host + route.build(), @options);
     end
 
-    def put(route, data)
+    def put(route, params)
+      data = {
+        body: params
+      }
       @options.merge!(data)
       self.class.put(@host + route.build(), @options);
     end

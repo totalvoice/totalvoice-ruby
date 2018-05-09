@@ -20,16 +20,11 @@ module TotalVoice
     # @return [json]
     #
     def enviar(numero_destino, mensagem, opcoes = {})
-
-      body = {
+      data = {
         numero_destino: numero_destino,
         mensagem: mensagem
       }
-      body.merge!(opcoes)
-
-      data = {
-        body: body
-      }
+      data.merge!(opcoes)
       @client.post(Route.new([ROTA_TTS]), data)
     end
 

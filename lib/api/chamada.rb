@@ -21,15 +21,12 @@ module TotalVoice
     #
     def ligar(numero_origem, numero_destino, opcoes = {})
 
-      body = {
+      data = {
         numero_origem: numero_origem,
         numero_destino: numero_destino
       }
-      body.merge!(opcoes)
+      data.merge!(opcoes)
 
-      data = {
-        body: body
-      }
       @client.post(Route.new([ROTA_CHAMADA]), data)
     end
 
@@ -87,10 +84,8 @@ module TotalVoice
     #
     def escutar(id, numero, modo)
       data = {
-        body: {
-          numero: numero,
-          modo: modo
-        }
+        numero: numero,
+        modo: modo
       }
       @client.post(Route.new([ROTA_CHAMADA, id.to_s, 'escuta']), data)
     end
@@ -105,10 +100,8 @@ module TotalVoice
     #
     def transferir(id, numero, perna)
       data = {
-        body: {
-          numero: numero,
-          perna: perna
-        }
+        numero: numero,
+        perna: perna
       }
       @client.post(Route.new([ROTA_CHAMADA, id.to_s, 'transfer']), data)
     end
@@ -123,10 +116,8 @@ module TotalVoice
     #
     def avaliar(id, nota, comentario = nil)
       data = {
-        body: {
-          nota: nota,
-          comentario: comentario
-        }
+        nota: nota,
+        comentario: comentario
       }
       @client.post(Route.new([ROTA_CHAMADA, id.to_s, 'avaliar']), data)
     end
