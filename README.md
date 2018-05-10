@@ -14,11 +14,11 @@ Client em Ruby para a API da TotalVoice
 
 > ### Requisitos
 
-Ruby: 2.4.3
-Gem: 2.6.14
+- Ruby: 2.4.3
+- Gem: 2.6.14
 
 > ### To-Do
 
-Tests
+- Tests
 
 ## EM CONSTRUÇÃO - AGUARDE!
