@@ -17,4 +17,8 @@ Client em Ruby para a API da TotalVoice
 Ruby: 2.4.3
 Gem: 2.6.14
 
+> ### To-Do
+
+Tests
+
 ## EM CONSTRUÇÃO - AGUARDE!
