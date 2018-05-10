@@ -34,7 +34,7 @@ module TotalVoice
       @conferencia = nil
       @sms = nil
       @tts = nil
-      @central = nil
+      @webphone = nil
       @ramal = nil
       @did = nil
     end
@@ -61,6 +61,10 @@ module TotalVoice
 
     def ramal
         @ramal ||= Ramal.new self
+    end
+
+    def webphone
+        @webphone ||= Webphone.new self
     end
 
     def get(route, query = nil)
