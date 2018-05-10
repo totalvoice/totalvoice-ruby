@@ -6,6 +6,8 @@ require_relative 'api/tts'
 require_relative 'api/chamada'
 require_relative 'api/perfil'
 require_relative 'api/ramal'
+require_relative 'api/webphone'
+require_relative 'api/ura'
 
 module TotalVoice
   # Inicializa o HTTP client
@@ -36,6 +38,7 @@ module TotalVoice
       @tts = nil
       @webphone = nil
       @ramal = nil
+      @ura = nil
       @did = nil
     end
 
@@ -65,6 +68,10 @@ module TotalVoice
 
     def webphone
         @webphone ||= Webphone.new self
+    end
+
+    def ura
+        @ura ||= Ura.new self
     end
 
     def get(route, query = nil)
