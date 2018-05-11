@@ -1,13 +1,15 @@
 require 'httparty'
 require_relative 'query'
 require_relative 'api/audio'
-require_relative 'api/sms'
-require_relative 'api/tts'
 require_relative 'api/chamada'
+require_relative 'api/composto'
 require_relative 'api/perfil'
 require_relative 'api/ramal'
-require_relative 'api/webphone'
+require_relative 'api/sms'
+require_relative 'api/tts'
 require_relative 'api/ura'
+require_relative 'api/webphone'
+
 
 module TotalVoice
   # Inicializa o HTTP client
@@ -44,6 +46,10 @@ module TotalVoice
 
     def audio
         @audio ||= Audio.new self
+    end
+
+    def composto
+        @composto ||= Composto.new self
     end
 
     def sms
