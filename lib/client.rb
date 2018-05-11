@@ -5,6 +5,7 @@ require_relative 'api/audio'
 require_relative 'api/chamada'
 require_relative 'api/composto'
 require_relative 'api/conferencia'
+require_relative 'api/conta'
 require_relative 'api/perfil'
 require_relative 'api/ramal'
 require_relative 'api/sms'
@@ -56,6 +57,10 @@ module TotalVoice
 
     def conferencia
         @conferencia ||= Conferencia.new self
+    end
+
+    def conta
+        @conta ||= Conta.new self
     end
 
     def sms

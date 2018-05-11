@@ -1,5 +1,4 @@
 require_relative '../route'
-require_relative '../query'
 
 module TotalVoice
   # Inicializa o HTTP client
