@@ -83,11 +83,10 @@ module TotalVoice
     # @return [json]
     #
     def escutar(id, numero, modo)
-      data = {
+      @client.post(Route.new([ROTA_CHAMADA, id.to_s, 'escuta']), {
         numero: numero,
         modo: modo
-      }
-      @client.post(Route.new([ROTA_CHAMADA, id.to_s, 'escuta']), data)
+      })
     end
 
     ##
@@ -99,11 +98,10 @@ module TotalVoice
     # @return [json]
     #
     def transferir(id, numero, perna)
-      data = {
+      @client.post(Route.new([ROTA_CHAMADA, id.to_s, 'transfer']), {
         numero: numero,
         perna: perna
-      }
-      @client.post(Route.new([ROTA_CHAMADA, id.to_s, 'transfer']), data)
+      })
     end
 
     ##
@@ -115,11 +113,10 @@ module TotalVoice
     # @return [json]
     #
     def avaliar(id, nota, comentario = nil)
-      data = {
+      @client.post(Route.new([ROTA_CHAMADA, id.to_s, 'avaliar']), {
         nota: nota,
         comentario: comentario
-      }
-      @client.post(Route.new([ROTA_CHAMADA, id.to_s, 'avaliar']), data)
+      })
     end
   end
 end

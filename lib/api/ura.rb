@@ -19,11 +19,10 @@ module TotalVoice
     # @return [json]
     #
     def criar(nome, data)
-      body = {
+      @client.post(Route.new([ROTA_URA]), {
         nome: nome,
         dados: data
-      }
-      @client.post(Route.new([ROTA_URA]), body)
+      })
     end
 
     ##

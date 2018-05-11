@@ -21,13 +21,12 @@ module TotalVoice
     # @return [json]
     #
     def enviar(numero_destino, dados, bina = nil, tags = nil)
-      data = {
+      @client.post(Route.new([ROTA_COMPOSTO]), {
         numero_destino: numero_destino,
         bina: bina,
         tags: tags,
         dados: dados
-      }
-      @client.post(Route.new([ROTA_COMPOSTO]), data)
+      })
     end
 
     ##

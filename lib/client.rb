@@ -1,8 +1,10 @@
 require 'httparty'
+
 require_relative 'query'
 require_relative 'api/audio'
 require_relative 'api/chamada'
 require_relative 'api/composto'
+require_relative 'api/conferencia'
 require_relative 'api/perfil'
 require_relative 'api/ramal'
 require_relative 'api/sms'
@@ -50,6 +52,10 @@ module TotalVoice
 
     def composto
         @composto ||= Composto.new self
+    end
+
+    def conferencia
+        @conferencia ||= Conferencia.new self
     end
 
     def sms

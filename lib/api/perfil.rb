@@ -87,10 +87,9 @@ module TotalVoice
     # @return [json]
     #
     def salva_webhook(nome, url)
-      data = {
+      @client.put(Route.new([ROTA_WEBHOOK, nome]), {
         url: url
-      }
-      @client.put(Route.new([ROTA_WEBHOOK, nome]), data)
+      })
     end
   end
 end

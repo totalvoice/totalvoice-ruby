@@ -24,14 +24,13 @@ module TotalVoice
     # @return [json]
     #
     def enviar(numero_destino, url_audio, resposta_usuario = false, bina = nil, gravar_audio = false)
-      data = {
+      @client.post(Route.new([ROTA_AUDIO]), {
         numero_destino: numero_destino,
         url_audio: url_audio,
         resposta_usuario: resposta_usuario,
         bina: bina,
         gravar_audio: gravar_audio
-      }
-      @client.post(Route.new([ROTA_AUDIO]), data)
+      })
     end
 
     ##
@@ -52,7 +51,6 @@ module TotalVoice
     # @return [json]
     #
     def relatorio(data_inicio, data_fim)
-
       @client.get(
         Route.new([ROTA_AUDIO, 'relatorio']),
         Query.new({ 'data_inicio': Time.parse(data_inicio.to_s).utc, 'data_fim': Time.parse(data_fim.to_s).utc })
