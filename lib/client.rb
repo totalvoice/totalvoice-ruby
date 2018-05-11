@@ -6,6 +6,7 @@ require_relative 'api/chamada'
 require_relative 'api/composto'
 require_relative 'api/conferencia'
 require_relative 'api/conta'
+require_relative 'api/did'
 require_relative 'api/perfil'
 require_relative 'api/ramal'
 require_relative 'api/sms'
@@ -35,20 +36,24 @@ module TotalVoice
 
       @audio = nil
       @chamada = nil
-      @perfil = nil
       @conta = nil
       @composto = nil
       @conferencia = nil
+      @did = nil
+      @perfil = nil
+      @ramal = nil
       @sms = nil
       @tts = nil
-      @webphone = nil
-      @ramal = nil
       @ura = nil
-      @did = nil
+      @webphone = nil
     end
 
     def audio
         @audio ||= Audio.new self
+    end
+
+    def chamada
+        @chamada ||= Chamada.new self
     end
 
     def composto
@@ -63,16 +68,8 @@ module TotalVoice
         @conta ||= Conta.new self
     end
 
-    def sms
-        @sms ||= Sms.new self
-    end
-
-    def tts
-        @tts ||= Tts.new self
-    end
-
-    def chamada
-        @chamada ||= Chamada.new self
+    def did
+        @did ||= Did.new self
     end
 
     def perfil
@@ -83,14 +80,29 @@ module TotalVoice
         @ramal ||= Ramal.new self
     end
 
-    def webphone
-        @webphone ||= Webphone.new self
+    def sms
+        @sms ||= Sms.new self
+    end
+
+    def tts
+        @tts ||= Tts.new self
     end
 
     def ura
         @ura ||= Ura.new self
     end
 
+    def webphone
+        @webphone ||= Webphone.new self
+    end
+
+    #
+    # GET HTTP Method
+    #
+    # @param [Route] route
+    # @param [Query] query
+    # @return [json]
+    #
     def get(route, query = nil)
 
       url = @host + route.build()
@@ -101,6 +113,13 @@ module TotalVoice
       self.class.get(url, @options);
     end
 
+    #
+    # POST HTTP Method
+    #
+    # @param [Route] route
+    # @param [Hash] params
+    # @return [json]
+    #
     def post(route, params)
       data = {
         body: params
@@ -109,6 +128,13 @@ module TotalVoice
       self.class.post(@host + route.build(), @options);
     end
 
+    #
+    # PUT HTTP Method
+    #
+    # @param [Route] route
+    # @param [Hash] params
+    # @return [json]
+    #
     def put(route, params)
       data = {
         body: params
@@ -117,6 +143,12 @@ module TotalVoice
       self.class.put(@host + route.build(), @options);
     end
 
+    #
+    # DELETE HTTP Method
+    #
+    # @param [Route] route
+    # @return [json]
+    #
     def delete(route)
       self.class.delete(@host + route.build(), @options);
     end
