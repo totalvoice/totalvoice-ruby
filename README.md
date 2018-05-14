@@ -17,6 +17,34 @@ Client em Ruby para a API da TotalVoice
 - Ruby: 2.4.3
 - Gem: 2.6.14
 
+> ### Instalação
+
+```bash
+ gem 'totalvoice-ruby'
+```
+
+```bash
+ gem install totalvoice-ruby
+```
+
+> ### Utilização
+
+Para utilizar esta biblioteca, primeiramente você deverá realizar um cadastro no site da [Total Voice](http://www.totalvoice.com.br). Após a criação do cadastro será disponibilizado um AccessToken para acesso a API.
+
+Com o AccessToken em mãos será possível realizar as consultas/cadastros conforme documentação da [API](https://api.totalvoice.com.br/doc/#/)
+
+A seguir exemplos de como utilizar esta biblioteca.
+
+> ##### Realiza uma chamada telefônica entre dois números: A e B
+
+```ruby
+require 'totalvoice-ruby'
+include TotalVoice
+
+@client = TotalVoice::API.new("{{access-token}}")
+puts @client.chamada.ligar("NUMERO-A", "NUMERO-B")
+```
+
 > ### To-Do
 
 - Tests
