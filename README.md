@@ -45,6 +45,26 @@ include TotalVoice
 puts @client.chamada.ligar("NUMERO-A", "NUMERO-B")
 ```
 
+> ##### Consulta os dados da chamada pelo ID
+
+```ruby
+require 'totalvoice-ruby'
+include TotalVoice
+
+@client = TotalVoice::API.new("{{access-token}}")
+puts @client.chamada.buscar(123456)
+```
+
+> ##### Encerra uma chamada ativa
+
+```ruby
+require 'totalvoice-ruby'
+include TotalVoice
+
+@client = TotalVoice::API.new("{{access-token}}")
+puts @client.chamada.encerrar(123456)
+```
+
 > ### To-Do
 
 - Tests
