@@ -95,8 +95,72 @@ include TotalVoice
 puts @client.audio.enviar("NUMERO-DESTINO", "URL-AUDIO")
 ```
 
+> ##### Configurações de central telefonica - consultando ramal
+
+```ruby
+require 'totalvoice-ruby'
+include TotalVoice
+
+@client = TotalVoice::API.new("{{access-token}}")
+puts @client.ramal.buscar(123)
+```
+
+> ##### Buscar os dados da Conta
+
+```ruby
+require 'totalvoice-ruby'
+include TotalVoice
+
+@client = TotalVoice::API.new("{{access-token}}")
+puts @client.conta.buscar(123)
+```
+
+> ##### Consulta saldo da Minha Conta
+
+```ruby
+require 'totalvoice-ruby'
+include TotalVoice
+
+@client = TotalVoice::API.new("{{access-token}}")
+puts @client.perfil.consulta_saldo()
+```
+
+> ##### Caso você necessite utilizar seu próprio endereço configurado na Total Voice
+
+```ruby
+require 'totalvoice-ruby'
+include TotalVoice
+
+@client = TotalVoice::API.new("{{access-token}}", "https://meuhost.com.br")
+puts @client.perfil.consulta_saldo()
+```
+
+> ##### Adquirindo um did
+
+```ruby
+require 'totalvoice-ruby'
+include TotalVoice
+
+@client = TotalVoice::API.new("{{access-token}}")
+puts @client.did.adquirir()
+```
+
+> ##### Listando seus DIDs
+
+```ruby
+require 'totalvoice-ruby'
+include TotalVoice
+
+@client = TotalVoice::API.new("{{access-token}}")
+puts @client.did.listar()
+```
+
 > ### To-Do
 
 - Tests
 
-## EM CONSTRUÇÃO - AGUARDE!
+Mais informações sobre os métodos disponíveis podem ser encontrados na documentação da [API](https://api.totalvoice.com.br/doc/#/)
+
+> ### Licença
+
+Esta biblioteca segue os termos de uso da [MIT](https://github.com/totalvoice/totalvoice-ruby/blob/master/LICENSE)
