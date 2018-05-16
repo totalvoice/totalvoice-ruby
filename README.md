@@ -65,6 +65,36 @@ include TotalVoice
 puts @client.chamada.encerrar(123456)
 ```
 
+> ##### Envio de SMS
+
+```ruby
+require 'totalvoice-ruby'
+include TotalVoice
+
+@client = TotalVoice::API.new("{{access-token}}")
+puts @client.sms.enviar("NUMERO-DESTINO", "MENSAGEM")
+```
+
+> ##### Envio de TTS
+
+```ruby
+require 'totalvoice-ruby'
+include TotalVoice
+
+@client = TotalVoice::API.new("{{access-token}}")
+puts @client.tts.enviar("NUMERO-DESTINO", "MENSAGEM")
+```
+
+> ##### Envio de Audio
+
+```ruby
+require 'totalvoice-ruby'
+include TotalVoice
+
+@client = TotalVoice::API.new("{{access-token}}")
+puts @client.audio.enviar("NUMERO-DESTINO", "URL-AUDIO")
+```
+
 > ### To-Do
 
 - Tests
