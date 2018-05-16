@@ -1,3 +1,3 @@
 module TotalVoice
-  VERSION = '0.0.1-rc'
+  VERSION = '1.0.0'
 end
