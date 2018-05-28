@@ -74,5 +74,19 @@ module TotalVoice
     def busca_chamada_recebida(id)
       @client.get(Route.new([ROTA_DID_CHAMADA, id.to_s]))
     end
+
+    ##
+    # Gera relatório de chamadas recebidas pelo DID
+    #
+    # @param [DateTime|String] data_inicio
+    # @param [DateTime|String] data_fim
+    # @return [json]
+    #
+    def relatorio(data_inicio, data_fim)
+      @client.get(
+        Route.new([ROTA_DID, 'relatorio']),
+        Query.new({ 'data_inicio': Time.parse(data_inicio.to_s).utc, 'data_fim': Time.parse(data_fim.to_s).utc })
+      )
+    end
   end
 end
