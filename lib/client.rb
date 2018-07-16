@@ -1,4 +1,5 @@
 require 'httparty'
+require 'json'
 
 require_relative 'query'
 require_relative 'api/audio'
@@ -30,6 +31,7 @@ module TotalVoice
       @options = {
         headers: {
           "Access-Token" => @access_token,
+          "Content-Type" => "application/json",
           "Accept" => "application/json"
         }
       }
@@ -122,7 +124,7 @@ module TotalVoice
     #
     def post(route, params)
       data = {
-        body: params
+        body: params.to_json
       }
       @options.merge!(data)
       self.class.post(@host + route.build(), @options);
@@ -137,7 +139,7 @@ module TotalVoice
     #
     def put(route, params)
       data = {
-        body: params
+        body: params.to_json
       }
       @options.merge!(data)
       self.class.put(@host + route.build(), @options);
