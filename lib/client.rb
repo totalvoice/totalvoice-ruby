@@ -3,6 +3,7 @@ require 'json'
 
 require_relative 'query'
 require_relative 'api/audio'
+require_relative 'api/bina'
 require_relative 'api/chamada'
 require_relative 'api/composto'
 require_relative 'api/conferencia'
@@ -37,6 +38,7 @@ module TotalVoice
       }
 
       @audio = nil
+      @bina = nil
       @chamada = nil
       @conta = nil
       @composto = nil
@@ -52,6 +54,10 @@ module TotalVoice
 
     def audio
         @audio ||= Audio.new self
+    end
+
+    def bina
+        @bina ||= Bina.new self
     end
 
     def chamada
