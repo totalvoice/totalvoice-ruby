@@ -18,13 +18,15 @@ module TotalVoice
     # @param [Hash] dados
     # @param [String] bina
     # @param [String] tags
+    # @param [Boolean] gravar_audio
     # @return [json]
     #
-    def enviar(numero_destino, dados, bina = nil, tags = nil)
+    def enviar(numero_destino, dados, bina = nil, tags = nil, gravar_audio = false)
       @client.post(Route.new([ROTA_COMPOSTO]), {
         numero_destino: numero_destino,
         bina: bina,
         tags: tags,
+        gravar_audio: gravar_audio,
         dados: dados
       })
     end
