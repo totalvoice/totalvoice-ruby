@@ -28,7 +28,7 @@ module TotalVoice
     # @param [String] timeout_ring
     # @return [json]
     #
-    def enviar(nome, estrategia_ring, timeout_ring = nil)
+    def criar(nome, estrategia_ring, timeout_ring = nil)
       data = {
         nome: nome,
         estrategia_ring: estrategia_ring,
