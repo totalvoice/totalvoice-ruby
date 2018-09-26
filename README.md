@@ -41,7 +41,7 @@ A seguir exemplos de como utilizar esta biblioteca.
 require 'totalvoice-ruby'
 include TotalVoice
 
-@client = TotalVoice::API.new("{{access-token}}")
+@client = TotalVoice::API.new("access-token")
 puts @client.chamada.ligar("NUMERO-A", "NUMERO-B")
 ```
 
@@ -51,7 +51,7 @@ puts @client.chamada.ligar("NUMERO-A", "NUMERO-B")
 require 'totalvoice-ruby'
 include TotalVoice
 
-@client = TotalVoice::API.new("{{access-token}}")
+@client = TotalVoice::API.new("access-token")
 puts @client.chamada.buscar(123456)
 ```
 
@@ -61,7 +61,7 @@ puts @client.chamada.buscar(123456)
 require 'totalvoice-ruby'
 include TotalVoice
 
-@client = TotalVoice::API.new("{{access-token}}")
+@client = TotalVoice::API.new("access-token")
 puts @client.chamada.encerrar(123456)
 ```
 
@@ -71,7 +71,7 @@ puts @client.chamada.encerrar(123456)
 require 'totalvoice-ruby'
 include TotalVoice
 
-@client = TotalVoice::API.new("{{access-token}}")
+@client = TotalVoice::API.new("access-token")
 puts @client.sms.enviar("NUMERO-DESTINO", "MENSAGEM")
 ```
 
@@ -81,7 +81,7 @@ puts @client.sms.enviar("NUMERO-DESTINO", "MENSAGEM")
 require 'totalvoice-ruby'
 include TotalVoice
 
-@client = TotalVoice::API.new("{{access-token}}")
+@client = TotalVoice::API.new("access-token")
 puts @client.tts.enviar("NUMERO-DESTINO", "MENSAGEM")
 ```
 
@@ -91,7 +91,7 @@ puts @client.tts.enviar("NUMERO-DESTINO", "MENSAGEM")
 require 'totalvoice-ruby'
 include TotalVoice
 
-@client = TotalVoice::API.new("{{access-token}}")
+@client = TotalVoice::API.new("access-token")
 puts @client.audio.enviar("NUMERO-DESTINO", "URL-AUDIO")
 ```
 
@@ -101,7 +101,7 @@ puts @client.audio.enviar("NUMERO-DESTINO", "URL-AUDIO")
 require 'totalvoice-ruby'
 include TotalVoice
 
-@client = TotalVoice::API.new("{{access-token}}")
+@client = TotalVoice::API.new("access-token")
 puts @client.ramal.buscar(123)
 ```
 
@@ -111,7 +111,7 @@ puts @client.ramal.buscar(123)
 require 'totalvoice-ruby'
 include TotalVoice
 
-@client = TotalVoice::API.new("{{access-token}}")
+@client = TotalVoice::API.new("access-token")
 puts @client.conta.buscar(123)
 ```
 
@@ -121,7 +121,7 @@ puts @client.conta.buscar(123)
 require 'totalvoice-ruby'
 include TotalVoice
 
-@client = TotalVoice::API.new("{{access-token}}")
+@client = TotalVoice::API.new("access-token")
 puts @client.perfil.consulta_saldo()
 ```
 
@@ -131,7 +131,7 @@ puts @client.perfil.consulta_saldo()
 require 'totalvoice-ruby'
 include TotalVoice
 
-@client = TotalVoice::API.new("{{access-token}}", "https://meuhost.com.br")
+@client = TotalVoice::API.new("access-token", "https://meuhost.com.br")
 puts @client.perfil.consulta_saldo()
 ```
 
@@ -141,7 +141,7 @@ puts @client.perfil.consulta_saldo()
 require 'totalvoice-ruby'
 include TotalVoice
 
-@client = TotalVoice::API.new("{{access-token}}")
+@client = TotalVoice::API.new("access-token")
 puts @client.did.adquirir()
 ```
 
@@ -151,7 +151,7 @@ puts @client.did.adquirir()
 require 'totalvoice-ruby'
 include TotalVoice
 
-@client = TotalVoice::API.new("{{access-token}}")
+@client = TotalVoice::API.new("access-token")
 puts @client.did.listar()
 ```
 
