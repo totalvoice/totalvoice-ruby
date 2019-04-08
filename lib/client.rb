@@ -16,6 +16,7 @@ require_relative 'api/sms'
 require_relative 'api/tts'
 require_relative 'api/ura'
 require_relative 'api/webphone'
+require_relative 'api/valida_numero'
 
 
 module TotalVoice
@@ -52,6 +53,7 @@ module TotalVoice
       @tts = nil
       @ura = nil
       @webphone = nil
+      @valida_numero = nil
     end
 
     def audio
@@ -108,6 +110,10 @@ module TotalVoice
 
     def webphone
         @webphone ||= Webphone.new self
+    end
+
+    def valida_numero
+      @valida_numero ||= ValidaNumero.new self
     end
 
     #

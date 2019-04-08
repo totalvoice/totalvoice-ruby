@@ -19,15 +19,17 @@ module TotalVoice
     # @param [String] bina
     # @param [String] tags
     # @param [Boolean] gravar_audio
+    # @param [Boolean] detecta_caixa
     # @return [json]
     #
-    def enviar(numero_destino, dados, bina = nil, tags = nil, gravar_audio = false)
+    def enviar(numero_destino, dados, bina = nil, tags = nil, gravar_audio = false, detecta_caixa = false)
       @client.post(Route.new([ROTA_COMPOSTO]), {
         numero_destino: numero_destino,
         bina: bina,
         tags: tags,
         gravar_audio: gravar_audio,
-        dados: dados
+        dados: dados,
+        detecta_caixa: detecta_caixa
       })
     end
 

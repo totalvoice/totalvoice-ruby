@@ -19,15 +19,17 @@ module TotalVoice
     # @param [Boolean] resposta_usuario
     # @param [Boolean] multi_sms
     # @param [DateTime|String] data_criacao
+    # @param [String] tags
     # @return [json]
     #
-    def enviar(numero_destino, mensagem, resposta_usuario = false, multi_sms = false, data_criacao = nil)
+    def enviar(numero_destino, mensagem, resposta_usuario = false, multi_sms = false, data_criacao = nil, tags = nil)
       @client.post(Route.new([ROTA_SMS]), {
         numero_destino: numero_destino,
         mensagem: mensagem,
         resposta_usuario: resposta_usuario,
         multi_sms: multi_sms,
-        data_criacao: data_criacao != nil ? Time.parse(data_criacao.to_s).utc : nil
+        data_criacao: data_criacao != nil ? Time.parse(data_criacao.to_s).utc : nil,
+        tags: tags
       })
     end
 

@@ -21,15 +21,17 @@ module TotalVoice
     # @param [Boolean] resposta_usuario
     # @param [String] bina
     # @param [Boolean] gravar_audio
+    # @param [Boolean] detecta_caixa
     # @return [json]
     #
-    def enviar(numero_destino, url_audio, resposta_usuario = false, bina = nil, gravar_audio = false)
+    def enviar(numero_destino, url_audio, resposta_usuario = false, bina = nil, gravar_audio = false, detecta_caixa = false)
       @client.post(Route.new([ROTA_AUDIO]), {
         numero_destino: numero_destino,
         url_audio: url_audio,
         resposta_usuario: resposta_usuario,
         bina: bina,
-        gravar_audio: gravar_audio
+        gravar_audio: gravar_audio,
+        detecta_caixa: detecta_caixa
       })
     end
 
