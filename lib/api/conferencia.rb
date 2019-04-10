@@ -55,5 +55,34 @@ module TotalVoice
     def excluir(id)
       @client.delete(Route.new([ROTA_CONFERENCIA, id.to_s]))
     end
+
+    ##
+    # Gera um relatorio de conferencias
+    #
+    # @param [DateTime|String] data_inicio
+    # @param [DateTime|String] data_fim
+    # @return [json]
+    #
+    def relatorio(data_inicio, data_fim)
+      @client.get(
+        Route.new([ROTA_CONFERENCIA, 'relatorio']),
+        Query.new({ 'data_inicio': Time.parse(data_inicio.to_s).utc, 'data_fim': Time.parse(data_fim.to_s).utc })
+      )
+    end
+
+    ##
+    # Gera um relatorio de chamadas de conferencias
+    #
+    # @param [DateTime|String] data_inicio
+    # @param [DateTime|String] data_fim
+    # @return [json]
+    #
+    def relatorio_chamadas_conferencias(data_inicio, data_fim)
+      @client.get(
+        Route.new([ROTA_CONFERENCIA, 'chamadas/relatorio']),
+        Query.new({ 'data_inicio': Time.parse(data_inicio.to_s).utc, 'data_fim': Time.parse(data_fim.to_s).utc })
+      )
+    end
+
   end
 end

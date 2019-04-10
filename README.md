@@ -7,10 +7,13 @@ Client em Ruby para a API da TotalVoice
 - [X] Consulta e envio de SMS
 - [X] Consulta e envio de TTS
 - [X] Consulta e envio de Audio
+- [X] Consulta e envio de Composto
 - [X] Gerenciamento da Conta
 - [X] Gerenciamento de Ramais
 - [X] URL do Webphone
 - [X] Gerenciamento de DID
+- [X] Validação de Número
+- [X] Verificação[Two Dactor Authentication]
 
 > ### Requisitos
 

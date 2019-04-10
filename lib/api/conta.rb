@@ -11,7 +11,7 @@ module TotalVoice
     end
 
     ##
-    # Cria uma conferência
+    # Cria uma conta abaixo da sua - Subconta
     #
     # @param [Hash] data
     # @return [json]
@@ -21,7 +21,7 @@ module TotalVoice
     end
 
     ##
-    # Atualiza os dados da conta
+    # Atualiza os dados da Subconta
     #
     # @param [Integer] id
     # @param [Hash] data
@@ -32,7 +32,7 @@ module TotalVoice
     end
 
     ##
-    # Busca os dados da Conta
+    # Busca os dados da Subconta
     #
     # @param [Integer] id
     # @return [json]
@@ -42,7 +42,7 @@ module TotalVoice
     end
 
     ##
-    # Remove uma Conta
+    # Remove uma Subconta
     #
     # @param [Integer] id
     # @return [json]
@@ -52,7 +52,7 @@ module TotalVoice
     end
 
     ##
-    # Lista contas criadas por mim
+    # Lista todas as subconta criadas por mim
     # @return [json]
     #
     def relatorio()

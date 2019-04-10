@@ -76,7 +76,7 @@ module TotalVoice
     end
 
     ##
-    # Gera relatório de chamadas recebidas pelo DID
+    # Gera relatório de chamadas recebidas de todos os DIDs
     #
     # @param [DateTime|String] data_inicio
     # @param [DateTime|String] data_fim
@@ -88,5 +88,21 @@ module TotalVoice
         Query.new({ 'data_inicio': Time.parse(data_inicio.to_s).utc, 'data_fim': Time.parse(data_fim.to_s).utc })
       )
     end
+
+    ##
+    # Gera relatório de chamadas recebidas por um unico DID
+    #
+    # @param [Integer] id
+    # @param [DateTime|String] data_inicio
+    # @param [DateTime|String] data_fim
+    # @return [json]
+    #
+    def relatorio_did(id,data_inicio, data_fim)
+      @client.get(
+        Route.new([ROTA_DID, id.to_s, 'relatorio']),
+        Query.new({ 'data_inicio': Time.parse(data_inicio.to_s).utc, 'data_fim': Time.parse(data_fim.to_s).utc })
+      )
+    end
+
   end
 end

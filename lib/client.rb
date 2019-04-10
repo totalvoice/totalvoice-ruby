@@ -17,6 +17,7 @@ require_relative 'api/tts'
 require_relative 'api/ura'
 require_relative 'api/webphone'
 require_relative 'api/valida_numero'
+require_relative 'api/verificacao'
 
 
 module TotalVoice
@@ -54,6 +55,7 @@ module TotalVoice
       @ura = nil
       @webphone = nil
       @valida_numero = nil
+      @verificacao = nil
     end
 
     def audio
@@ -116,6 +118,9 @@ module TotalVoice
       @valida_numero ||= ValidaNumero.new self
     end
 
+    def verificacao
+      @verificacao ||= Verificacao.new self
+    end
     #
     # GET HTTP Method
     #
