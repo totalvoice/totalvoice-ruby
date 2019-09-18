@@ -1,4 +1,5 @@
 require_relative '../route'
+require_relative '../query'
 
 module TotalVoice
   # Inicializa o HTTP client
@@ -17,7 +18,7 @@ module TotalVoice
     # @return [json]
     #
     def url(data)
-      @client.get(Route.new([ROTA_WEBPHONE]), data)
+      @client.get(Route.new([ROTA_WEBPHONE]), Query.new(data))
     end
   end
 end
