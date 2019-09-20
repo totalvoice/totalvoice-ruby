@@ -15,10 +15,16 @@ module TotalVoice
     # Envia um número pra receber um código de validação
     #
     # @param [String] telefone
+    # @param [String] mensagem_sms
+    # @param [String] mensagem_tts
     # @return [json]
     #
-    def enviar(telefone)
-      @client.post(Route.new([ROTA_BINA]), {telefone: telefone})
+    def enviar(telefone, mensagem_sms = nil, mensagem_tts = nil)
+      @client.post(Route.new([ROTA_BINA]), {
+        telefone: telefone,
+        mensagem_sms: mensagem_sms,
+        mensagem_tts: mensagem_tts
+      })
     end
 
     ##
