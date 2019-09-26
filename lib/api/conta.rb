@@ -58,5 +58,15 @@ module TotalVoice
     def relatorio()
       @client.get(Route.new([ROTA_CONTA, 'relatorio']))
     end
+    
+    ##
+    # Adiciona crédito bônus nas contas criadas por mim
+    # @param [Integer] id da conta filha
+    # @param [Float] valor
+    # @return [json]
+    #
+    def recarga_bonus(id, valor)
+      @client.post(Route.new([ROTA_CONTA, id.to_s, 'bonus']), { valor:valor })
+    end
   end
 end
