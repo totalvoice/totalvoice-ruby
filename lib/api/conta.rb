@@ -1,4 +1,5 @@
 require_relative '../route'
+require_relative '../query'
 
 module TotalVoice
   # Inicializa o HTTP client
@@ -57,6 +58,19 @@ module TotalVoice
     #
     def relatorio()
       @client.get(Route.new([ROTA_CONTA, 'relatorio']))
+    end
+
+    ##
+    # Gera uma URL para recarga de créditos
+    #
+    # @param [String] url
+    # @return [json]
+    #
+    def url_recarga(url)
+      @client.get(
+        Route.new([ROTA_CONTA, 'urlrecarga']),
+        Query.new({ 'url_retorno': url })
+      )
     end
     
     ##
