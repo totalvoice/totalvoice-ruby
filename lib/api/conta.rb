@@ -76,11 +76,12 @@ module TotalVoice
     ##
     # Adiciona crédito bônus nas contas criadas por mim
     # @param [Integer] id da conta filha
+    # @param [String] nome do plano
     # @param [Float] valor
     # @return [json]
     #
-    def recarga_bonus(id, valor)
-      @client.post(Route.new([ROTA_CONTA, id.to_s, 'bonus']), { valor:valor })
+    def recarga_bonus(id, nome, valor)
+      @client.post(Route.new([ROTA_CONTA, id.to_s, 'bonus']), { nome: nome, valor:valor })
     end
   end
 end
