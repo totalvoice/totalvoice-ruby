@@ -6,7 +6,7 @@ module TotalVoice
   class Conta
     attr_reader :client
     ROTA_CONTA = "/conta"
-    ROTA_WEBHOOK_DEFAULT = "/conta/webhook"
+    ROTA_WEBHOOK_DEFAULT = "/webhook-default"
 
     def initialize(client)
       @client = client
@@ -90,7 +90,7 @@ module TotalVoice
     # @return [json]
     #
     def webhooks_default()
-      @client.get(Route.new([ROTA_WEBHOOK_DEFAULT]))
+      @client.get(Route.new([ROTA_CONTA, ROTA_WEBHOOK_DEFAULT]))
     end
 
     ##
@@ -100,7 +100,7 @@ module TotalVoice
     # @return [json]
     #
     def excluir_webhook_default(nome)
-      @client.delete(Route.new([ROTA_WEBHOOK_DEFAULT, nome]))
+      @client.delete(Route.new([ROTA_CONTA, ROTA_WEBHOOK_DEFAULT, nome]))
     end
 
     ##
@@ -111,7 +111,7 @@ module TotalVoice
     # @return [json]
     #
     def salva_webhook_default(nome, url)
-      @client.put(Route.new([ROTA_WEBHOOK_DEFAULT, nome]), {
+      @client.put(Route.new([ROTA_CONTA, ROTA_WEBHOOK_DEFAULT, nome]), {
         url: url
       })
     end
