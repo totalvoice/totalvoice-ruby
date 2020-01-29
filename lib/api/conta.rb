@@ -86,7 +86,7 @@ module TotalVoice
     end
 
         ##
-    # Retorna a lista de webhooks configurados para esta conta
+    # Retorna a lista de webhooks default configurados para esta conta
     # @return [json]
     #
     def webhooks_default()
@@ -94,7 +94,7 @@ module TotalVoice
     end
 
     ##
-    # Apaga um webhook
+    # Apaga um webhook default
     #
     # @param [String] nome
     # @return [json]
@@ -104,7 +104,7 @@ module TotalVoice
     end
 
     ##
-    # Cadastra ou atualiza um webhook
+    # Cadastra ou atualiza um webhook default
     #
     # @param [String] nome
     # @param [String] url
