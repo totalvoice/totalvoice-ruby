@@ -110,7 +110,7 @@ module TotalVoice
     # @param [String] url
     # @return [json]
     #
-    def salva_webhook_default(nome, url)
+    def salvar_webhook_default(nome, url)
       @client.put(Route.new([ROTA_CONTA, ROTA_WEBHOOK_DEFAULT, nome]), {
         url: url
       })
