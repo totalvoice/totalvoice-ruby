@@ -6,6 +6,7 @@ module TotalVoice
   class Conta
     attr_reader :client
     ROTA_CONTA = "/conta"
+    ROTA_WEBHOOK_DEFAULT = "/webhook-default"
 
     def initialize(client)
       @client = client
@@ -82,6 +83,37 @@ module TotalVoice
     #
     def recarga_bonus(id, nome, valor)
       @client.post(Route.new([ROTA_CONTA, id.to_s, 'bonus']), { nome: nome, valor:valor })
+    end
+
+        ##
+    # Retorna a lista de webhooks default configurados para esta conta
+    # @return [json]
+    #
+    def webhooks_default()
+      @client.get(Route.new([ROTA_CONTA, ROTA_WEBHOOK_DEFAULT]))
+    end
+
+    ##
+    # Apaga um webhook default
+    #
+    # @param [String] nome
+    # @return [json]
+    #
+    def excluir_webhook_default(nome)
+      @client.delete(Route.new([ROTA_CONTA, ROTA_WEBHOOK_DEFAULT, nome]))
+    end
+
+    ##
+    # Cadastra ou atualiza um webhook default
+    #
+    # @param [String] nome
+    # @param [String] url
+    # @return [json]
+    #
+    def salvar_webhook_default(nome, url)
+      @client.put(Route.new([ROTA_CONTA, ROTA_WEBHOOK_DEFAULT, nome]), {
+        url: url
+      })
     end
   end
 end
