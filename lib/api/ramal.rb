@@ -6,6 +6,7 @@ module TotalVoice
   class Ramal
     attr_reader :client
     ROTA_RAMAL = "/ramal"
+    ROTA_FILA = "/fila"
 
     def initialize(client)
       @client = client
@@ -50,6 +51,17 @@ module TotalVoice
     #
     def atualizar(id, data)
       @client.put(Route.new([ROTA_RAMAL, id.to_s]), data)
+    end
+
+    ##
+    # Atualiza as informações do Ramal
+    #
+    # @param [Integer] id
+    # @param [Hash] data
+    # @return [json]
+    #
+    def atualizar_ramal_fila(id, data)
+      @client.put(Route.new([ROTA_RAMAL, id.to_s, ROTA_FILA]), data)
     end
 
     ##
