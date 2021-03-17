@@ -12,7 +12,6 @@ Client em Ruby para a API da TotalVoice
 - [X] Gerenciamento de Ramais
 - [X] URL do Webphone
 - [X] Gerenciamento de DID
-- [X] Validação de Número
 - [X] Verificação[Two Dactor Authentication]
 
 > ### Requisitos
