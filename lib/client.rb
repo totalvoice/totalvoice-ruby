@@ -28,16 +28,16 @@ module TotalVoice
     #   - +Access-Token+ -> Access-Token TotalVoice
     #   - +host+ -> Base URL para API
     #
-    def initialize(access_token, host = nil)
+    def initialize(access_token, host = nil, options = {})
       @access_token     = access_token
       @host             = host ? host : ENDPOINT
       @options = {
         headers: {
-          "Access-Token" => @access_token,
-          "Content-Type" => "application/json",
-          "Accept" => "application/json"
+          'Access-Token' => @access_token,
+          'Content-Type' => 'application/json',
+          'Accept' => 'application/json'
         }
-      }
+      }.merge(options)
 
       @audio = nil
       @bina = nil
