@@ -17,13 +17,14 @@ require_relative 'api/tts'
 require_relative 'api/ura'
 require_relative 'api/webphone'
 require_relative 'api/verificacao'
+require_relative 'totalvoice/version'
 
 
 module TotalVoice
   # Inicializa o HTTP client
   class API
     include HTTParty
-    ENDPOINT = 'https://api2.totalvoice.com.br'
+    ENDPOINT = 'https://voice-api.zenvia.com'
     # * *Args*    :
     #   - +Access-Token+ -> Access-Token TotalVoice
     #   - +host+ -> Base URL para API
@@ -35,7 +36,8 @@ module TotalVoice
         headers: {
           'Access-Token' => @access_token,
           'Content-Type' => 'application/json',
-          'Accept' => 'application/json'
+          'Accept' => 'application/json',
+          'User-Agent' => 'lib-ruby/' + VERSION
         }
       }.merge(options)
 
