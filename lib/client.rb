@@ -16,29 +16,30 @@ require_relative 'api/sms'
 require_relative 'api/tts'
 require_relative 'api/ura'
 require_relative 'api/webphone'
-require_relative 'api/valida_numero'
 require_relative 'api/verificacao'
+require_relative 'totalvoice/version'
 
 
 module TotalVoice
   # Inicializa o HTTP client
   class API
     include HTTParty
-    ENDPOINT = 'https://api2.totalvoice.com.br'
+    ENDPOINT = 'https://voice-api.zenvia.com'
     # * *Args*    :
     #   - +Access-Token+ -> Access-Token TotalVoice
     #   - +host+ -> Base URL para API
     #
-    def initialize(access_token, host = nil)
+    def initialize(access_token, host = nil, options = {})
       @access_token     = access_token
       @host             = host ? host : ENDPOINT
       @options = {
         headers: {
-          "Access-Token" => @access_token,
-          "Content-Type" => "application/json",
-          "Accept" => "application/json"
+          'Access-Token' => @access_token,
+          'Content-Type' => 'application/json',
+          'Accept' => 'application/json',
+          'User-Agent' => 'lib-ruby/' + VERSION
         }
-      }
+      }.merge(options)
 
       @audio = nil
       @bina = nil
@@ -54,7 +55,6 @@ module TotalVoice
       @tts = nil
       @ura = nil
       @webphone = nil
-      @valida_numero = nil
       @verificacao = nil
     end
 
@@ -112,10 +112,6 @@ module TotalVoice
 
     def webphone
         @webphone ||= Webphone.new self
-    end
-
-    def valida_numero
-      @valida_numero ||= ValidaNumero.new self
     end
 
     def verificacao
